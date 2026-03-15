@@ -17,7 +17,7 @@ public class Player  {
     Texture texture;
 
     public Player() {
-        // создаём квадрат 32x32
+
         Pixmap pixmap = new Pixmap(32, 32, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.WHITE);
         pixmap.fill();
