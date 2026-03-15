@@ -1,18 +1,20 @@
-package io.xavramenkom;
+package io.github.some_example_name;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 /** First screen of the application. Displayed after the application is created. */
+
+
 public class FirstScreen implements Screen {
+
+
     @Override
     public void show() {
         // Prepare your screen here.
     }
-
     @Override
-    public void render(float delta) {
-        // Draw your screen here. "delta" is the time since last render in seconds.
-    }
+    public void render(float delta){};
 
     @Override
     public void resize(int width, int height) {
@@ -40,6 +42,5 @@ public class FirstScreen implements Screen {
 
     @Override
     public void dispose() {
-        // Destroy screen's assets here.
     }
 }
