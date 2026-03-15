@@ -11,10 +11,15 @@ import com.badlogic.gdx.graphics.Color;
 import java.awt.*;
 
 public class Player  {
-    float x, y;
-    float speed = 70;
+    private float x, y;
+    private float speed = 70;
 
-    Texture texture;
+    public float attackX;
+    public float attackY;
+
+    private  boolean attacking;
+
+    public Texture texture;
 
     public Player() {
 
@@ -25,11 +30,23 @@ public class Player  {
         texture = new Texture(pixmap);
         pixmap.dispose();
 
+        attacking = false;
+
         x = 200;
         y = 200;
     }
-    public void update(float delta) {
 
+    public void attack(){
+
+        System.out.println("Attacked");
+    };
+
+    public void update(float delta) {
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+            attackX = Gdx.input.getX();
+            attackY = Gdx.graphics.getHeight() - Gdx.input.getY();
+            attacking = true;
+        }
         if (Gdx.input.isKeyPressed(Input.Keys.A))
             x -= speed * delta;
 
@@ -49,4 +66,10 @@ public class Player  {
     public void dispose() {
         texture.dispose();
     }
+
+    public boolean isAttacking(){
+        return attacking;
+    }
+
+
 }
