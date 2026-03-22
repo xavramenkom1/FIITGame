@@ -10,11 +10,15 @@ import com.badlogic.gdx.graphics.Color;
 
 import java.awt.*;
 
-public class Player  {
-    float x, y;
-    float speed = 70;
 
-    Texture texture;
+public class Player  {
+    private float x, y;
+    private float speed;
+
+    public float attackX;
+    public float attackY;
+
+    public Texture texture;
 
     public Player() {
 
@@ -25,10 +29,16 @@ public class Player  {
         texture = new Texture(pixmap);
         pixmap.dispose();
 
+
+        this.speed = 70;
+
         x = 200;
         y = 200;
     }
+
+
     public void update(float delta) {
+
 
         if (Gdx.input.isKeyPressed(Input.Keys.A))
             x -= speed * delta;
@@ -49,4 +59,22 @@ public class Player  {
     public void dispose() {
         texture.dispose();
     }
+
+    public Projectile attack(){
+        float mouseX = Gdx.input.getX();
+        float mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
+
+        float dirX = mouseX - x;
+        float dirY = mouseY - y;
+
+        float length = (float)Math.sqrt(dirX * dirX + dirY * dirY);
+
+        dirX /= length;
+        dirY /= length;
+
+        return new Projectile("textures/projectiles/mage-projectile.png", x, y, dirX, dirY);
+    }
+
+
+
 }
