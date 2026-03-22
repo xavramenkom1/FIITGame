@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 
@@ -14,15 +15,20 @@ public class Projectile {
     private float dirrectionX, dirrectionY;
     private float speed;
 
-    Texture texture;
+    private int damage;
 
-    public Projectile(String texturePath, float x, float y, float dirrectionX, float dirrectionY) {
+    private Texture texture;
+    private Rectangle bounds;
+
+    public Projectile(String texturePath, float x, float y, float dirrectionX, float dirrectionY, int damage) {
         texture = new Texture(texturePath);
         speed = 200;
         this.x = x;
         this.y = y;
         this.dirrectionX = dirrectionX;
         this.dirrectionY = dirrectionY;
+        this.damage = damage;
+        this.bounds = new Rectangle(this.x, this.y, this.texture.getWidth(), this.texture.getHeight());
     }
 
     public void setPosition(float x, float y){

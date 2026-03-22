@@ -15,8 +15,14 @@ public class Player  {
     private float x, y;
     private float speed;
 
-    public float attackX;
-    public float attackY;
+    private int damage;
+    private int health;
+    private int maxHealth;
+    private int lvl;
+    private int xp;
+
+    private float attackX;
+    private float attackY;
 
     public Texture texture;
 
@@ -29,6 +35,10 @@ public class Player  {
         texture = new Texture(pixmap);
         pixmap.dispose();
 
+        maxHealth = 100;
+        health = 100;
+        damage = 15;
+        xp = 0;
 
         this.speed = 70;
 
@@ -72,9 +82,15 @@ public class Player  {
         dirX /= length;
         dirY /= length;
 
-        return new Projectile("textures/projectiles/mage-projectile.png", x, y, dirX, dirY);
+        return new Projectile("textures/projectiles/mage-projectile.png", x, y, dirX, dirY , damage);
     }
 
-
+    private void levelUp(){
+        lvl++;
+        damage += 6 * lvl;
+        maxHealth += 8 * lvl;
+        health = maxHealth;
+        xp = 0;
+    }
 
 }
