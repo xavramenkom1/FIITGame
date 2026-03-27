@@ -7,12 +7,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector2;
 
 import java.awt.*;
+import java.lang.constant.Constable;
+import java.security.PrivateKey;
 
 
 public class Player  {
-    private float x, y;
+    private Vector2 position;
     private float speed;
 
     private int damage;
@@ -20,9 +23,9 @@ public class Player  {
     private int maxHealth;
     private int lvl;
     private int xp;
+    private int neededXp;
 
-    private float attackX;
-    private float attackY;
+    private Vector2 attackDirection;
 
     public Texture texture;
 
@@ -37,13 +40,13 @@ public class Player  {
 
         maxHealth = 100;
         health = 100;
-        damage = 15;
+        damage = 5;
         xp = 0;
+        neededXp = 100;
 
         this.speed = 70;
 
-        x = 200;
-        y = 200;
+        this.position = new Vector2(200, 200);
     }
 
 
@@ -51,19 +54,19 @@ public class Player  {
 
 
         if (Gdx.input.isKeyPressed(Input.Keys.A))
-            x -= speed * delta;
+            position.x -= speed * delta;
 
         if (Gdx.input.isKeyPressed(Input.Keys.D))
-            x += speed * delta;
+            position.x += speed * delta;
 
         if (Gdx.input.isKeyPressed(Input.Keys.W))
-            y += speed * delta;
+            position.y += speed * delta;
 
         if (Gdx.input.isKeyPressed(Input.Keys.S))
-            y -= speed * delta;
+            position.y -= speed * delta;
     }
     public void render(SpriteBatch batch) {
-        batch.draw(texture, x, y);
+        batch.draw(texture, position.x, position.y);
     }
 
     public void dispose() {
@@ -74,15 +77,15 @@ public class Player  {
         float mouseX = Gdx.input.getX();
         float mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
 
-        float dirX = mouseX - x;
-        float dirY = mouseY - y;
+        float dirX = mouseX - position.x;
+        float dirY = mouseY - position.y;
 
         float length = (float)Math.sqrt(dirX * dirX + dirY * dirY);
 
         dirX /= length;
         dirY /= length;
 
-        return new Projectile("textures/projectiles/mage-projectile.png", x, y, dirX, dirY , damage);
+        return new Projectile("textures/projectiles/mage-projectile.png", position.x, position.y, dirX, dirY , damage);
     }
 
     private void levelUp(){
@@ -90,7 +93,16 @@ public class Player  {
         damage += 6 * lvl;
         maxHealth += 8 * lvl;
         health = maxHealth;
-        xp = 0;
+        xp = xp - neededXp;
+        neededXp += 10 * lvl;
+
+
+    }
+    public void gainXp(int droppedXp){
+        xp += droppedXp;
+        if(xp >= neededXp){
+            levelUp();
+        }
     }
 
 }

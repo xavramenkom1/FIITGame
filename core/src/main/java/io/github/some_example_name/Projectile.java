@@ -1,18 +1,15 @@
 package io.github.some_example_name;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 
 public class Projectile {
-    private float x, y;
+    private Vector2 position;
 
-    private float dirrectionX, dirrectionY;
+    private Vector2 direction;
     private float speed;
 
     private int damage;
@@ -20,40 +17,48 @@ public class Projectile {
     private Texture texture;
     private Rectangle bounds;
 
-    public Projectile(String texturePath, float x, float y, float dirrectionX, float dirrectionY, int damage) {
+    public Projectile(String texturePath, float x, float y, float directionX, float directionY, int damage) {
         texture = new Texture(texturePath);
         speed = 200;
-        this.x = x;
-        this.y = y;
-        this.dirrectionX = dirrectionX;
-        this.dirrectionY = dirrectionY;
+        this.position = new Vector2(x, y);
+
+        this.direction = new Vector2(directionX, directionY).nor();
+
         this.damage = damage;
-        this.bounds = new Rectangle(this.x, this.y, this.texture.getWidth(), this.texture.getHeight());
+
+        this.bounds = new Rectangle(position.x, position.y, this.texture.getWidth(), this.texture.getHeight());
     }
 
-    public void setPosition(float x, float y){
-        this.x = x;
-        this.y = y;
+    public void setPosition(Vector2 position) {
+        this.position = new Vector2(position);
     }
-    public void setDirrection(float x, float y){
-        dirrectionX = x;
-        dirrectionY = y;
+    public void setDirrection(Vector2 dirrection){
+        this.direction = new Vector2(dirrection);
     }
 
     public Vector2 getPosition(){
-        return new Vector2(x,y);
+        return new Vector2(position);
     }
     public Vector2 getDirrection(){
-        return new Vector2(dirrectionX,dirrectionY);
+        return new Vector2(direction);
+    }
+    public int getDamage(){
+        return damage;
     }
 
     public void update(float delta){
-        x += dirrectionX * delta * speed;
-        y += dirrectionY * delta * speed;
+        position.x += direction.x * delta * speed;
+        position.y += direction.y * delta * speed;
+        bounds.setPosition(position.x, position.y);
     }
 
     public void render(SpriteBatch spriteBatch){
-        spriteBatch.draw(texture, x, y);
+        spriteBatch.draw(texture, position.x, position.y);
+
+    }
+
+    public boolean collides(Rectangle enemy){
+        return bounds.overlaps(enemy);
     }
 
 }
