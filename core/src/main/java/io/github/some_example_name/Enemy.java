@@ -2,7 +2,6 @@ package io.github.some_example_name;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
@@ -57,13 +56,8 @@ public class Enemy {
         }
 
         public void update(float delta){
-
-            if(isDead()){
-                // die();
-            }
             move(delta);
             bounds.setPosition(position);
-
         }
 
 
@@ -75,7 +69,7 @@ public class Enemy {
         }
         void move(float delta){
             bounds.setPosition(position.x, position.y);
-        };
+        }
 
 
         public int getHealth() {
@@ -94,7 +88,7 @@ public class Enemy {
 
         public boolean isDead(){
             return health <= 0;
-        };
+        }
 
         private void die(){
 

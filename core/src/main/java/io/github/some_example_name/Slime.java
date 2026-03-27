@@ -1,6 +1,6 @@
 package io.github.some_example_name;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
+
 import com.badlogic.gdx.math.Rectangle;
 
 public class Slime extends Enemy {

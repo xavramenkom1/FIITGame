@@ -3,8 +3,6 @@ package io.github.some_example_name;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -18,8 +16,8 @@ public class Main extends Game {
     Player player;
     SpriteBatch spriteBatch;
 
-    List<Projectile> projectiles = new ArrayList<Projectile>();
-    List<Enemy> enemies = new ArrayList<Enemy>();
+    List<Projectile> projectiles = new ArrayList<>();
+    List<Enemy> enemies = new ArrayList<>();
 
     @Override
     public void create() {
@@ -63,7 +61,6 @@ public class Main extends Game {
                     i--;
                     if(enemy.isDead()){
                         enemies.remove(j);
-                        j--;
                         player.gainXp(enemy.getDroppedXp());
                     }
                     break;

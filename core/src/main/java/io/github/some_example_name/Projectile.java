@@ -32,14 +32,14 @@ public class Projectile {
     public void setPosition(Vector2 position) {
         this.position = new Vector2(position);
     }
-    public void setDirrection(Vector2 dirrection){
-        this.direction = new Vector2(dirrection);
+    public void setDirection(Vector2 direction){
+        this.direction = new Vector2(direction);
     }
 
     public Vector2 getPosition(){
         return new Vector2(position);
     }
-    public Vector2 getDirrection(){
+    public Vector2 getDirection(){
         return new Vector2(direction);
     }
     public int getDamage(){

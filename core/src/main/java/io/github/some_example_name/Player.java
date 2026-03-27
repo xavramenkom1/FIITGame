@@ -5,13 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 
 import java.awt.*;
-import java.lang.constant.Constable;
-import java.security.PrivateKey;
 
 
 public class Player  {
@@ -25,7 +22,6 @@ public class Player  {
     private int xp;
     private int neededXp;
 
-    private Vector2 attackDirection;
 
     public Texture texture;
 
@@ -68,10 +64,7 @@ public class Player  {
     public void render(SpriteBatch batch) {
         batch.draw(texture, position.x, position.y);
     }
-
-    public void dispose() {
-        texture.dispose();
-    }
+    
 
     public Projectile attack(){
         float mouseX = Gdx.input.getX();
@@ -88,6 +81,10 @@ public class Player  {
         return new Projectile("textures/projectiles/mage-projectile.png", position.x, position.y, dirX, dirY , damage);
     }
 
+    public int getHealth(){
+        return health;
+    }
+
     private void levelUp(){
         lvl++;
         damage += 6 * lvl;
@@ -98,6 +95,9 @@ public class Player  {
 
 
     }
+
+
+
     public void gainXp(int droppedXp){
         xp += droppedXp;
         if(xp >= neededXp){
