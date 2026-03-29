@@ -10,19 +10,18 @@ public class Projectile {
     private Vector2 position;
 
     private Vector2 direction;
-    private float speed;
+    protected float speed;
 
     private int damage;
 
     private Texture texture;
     private Rectangle bounds;
 
-    public Projectile(String texturePath, float x, float y, float directionX, float directionY, int damage) {
+    public Projectile(String texturePath, Vector2 position, Vector2 direction, int damage) {
         texture = new Texture(texturePath);
-        speed = 200;
-        this.position = new Vector2(x, y);
+        this.position = new Vector2(position);
 
-        this.direction = new Vector2(directionX, directionY).nor();
+        this.direction = new Vector2(direction).nor();
 
         this.damage = damage;
 

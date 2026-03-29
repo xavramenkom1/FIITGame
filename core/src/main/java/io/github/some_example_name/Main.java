@@ -45,7 +45,7 @@ public class Main extends Game {
         float delta = Gdx.graphics.getDeltaTime();
 
         // Player
-
+        System.out.println(String.format("%d/%d", player.getMana(), player.getMaxMana()));
         player.update(delta);
         spriteBatch.begin();
         player.render(spriteBatch);

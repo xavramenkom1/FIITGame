@@ -25,8 +25,9 @@ public class Player  {
     private boolean flip;
 
 
-    private int mana;
-    private int maxMana;
+    private float mana;
+    private float maxMana;
+    private float manaRegeneration;
 
 
     public Sprite sprite;
@@ -40,8 +41,9 @@ public class Player  {
         xp = 0;
         neededXp = 100;
 
-        maxMana = 100;
-        mana = 100;
+        maxMana = 100f;
+        mana = 100f;
+        manaRegeneration = 12f;
 
         this.speed = 70;
 
@@ -52,6 +54,7 @@ public class Player  {
 
     public void update(float delta) {
 
+        // Inputs
 
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             position.x -= speed * delta;
@@ -67,12 +70,17 @@ public class Player  {
         if (Gdx.input.isKeyPressed(Input.Keys.S))
             position.y -= speed * delta;
 
-        if(!flip && !sprite.isFlipX()){
+        if (!flip && !sprite.isFlipX()) {
+            sprite.flip(true, false);
+        } else if (flip && sprite.isFlipX()) {
             sprite.flip(true, false);
         }
-        else if (flip && sprite.isFlipX()){
-            sprite.flip(true, false);
-        }
+
+        // Logic
+
+        mana += manaRegeneration * delta;
+        mana = Math.min(mana, maxMana);
+
     }
     public void render(SpriteBatch batch) {
         batch.draw(sprite, position.x, position.y);
@@ -85,15 +93,14 @@ public class Player  {
         float mouseX = Gdx.input.getX();
         float mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
 
-        float dirX = mouseX - position.x;
-        float dirY = mouseY - position.y;
+        Vector2 direction = new Vector2(mouseX - position.x, mouseY - position.y);
 
-        float length = (float)Math.sqrt(dirX * dirX + dirY * dirY);
+        float length = (float)Math.sqrt(direction.x * direction.x + direction.y * direction.y);
 
-        dirX /= length;
-        dirY /= length;
+        direction.x /= length;
+        direction.y /= length;
 
-        return new Projectile("textures/projectiles/mage-projectile.png", position.x, position.y, dirX, dirY , damage);
+        return new MageProjectile("textures/projectiles/mage-projectile.png", position, direction, damage);
 
     }
 
@@ -102,10 +109,10 @@ public class Player  {
     }
 
     public int getMana(){
-        return mana;
+        return (int)mana;
     }
     public int getMaxMana(){
-        return maxMana;
+        return (int)maxMana;
     }
 
 
