@@ -1,4 +1,4 @@
-package io.github.some_example_name;
+package io.github.fiitgame;
 
 public class NoManaException extends Exception {
     public NoManaException(String message) {

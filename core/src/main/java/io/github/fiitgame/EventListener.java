@@ -1,10 +1,10 @@
-package io.github.some_example_name;
+package io.github.fiitgame;
 
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.List;
 
-import static io.github.some_example_name.Main.player;
+import static io.github.fiitgame.Main.player;
 
 public class EventListener {
 

@@ -1,16 +1,15 @@
-package io.github.some_example_name;
+package io.github.fiitgame;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.github.some_example_name.EventListener.*;
+import static io.github.fiitgame.EventListener.*;
 
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */

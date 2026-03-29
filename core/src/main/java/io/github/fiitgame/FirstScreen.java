@@ -1,7 +1,6 @@
-package io.github.some_example_name;
+package io.github.fiitgame;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 /** First screen of the application. Displayed after the application is created. */
 
