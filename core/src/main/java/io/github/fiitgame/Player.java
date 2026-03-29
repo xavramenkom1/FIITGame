@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import javax.management.InvalidAttributeValueException;
+
 
 public class Player  {
     private Vector2 position;
@@ -28,12 +30,12 @@ public class Player  {
 
     public Sprite sprite;
 
-    public Player() {
-
-        sprite = new Sprite(new Texture("textures/Player/mage-skin.png"));
+    public Player(boolean initialiseGraphics) {
+        if(initialiseGraphics) { sprite = new Sprite(new Texture("textures/Player/mage-skin.png")); }
         maxHealth = 100;
         health = 100;
         damage = 5;
+        lvl = 1;
         xp = 0;
         neededXp = 100;
 
@@ -111,21 +113,34 @@ public class Player  {
         return (int)maxMana;
     }
 
+    public int getLvl(){
+        return lvl;
+    }
+    public int getXp(){
+        return xp;
+    }
+    public int getNeededXp(){
+        return neededXp;
+    }
+    public int getdamage(){
+        return damage;
+    }
+
 
     private void levelUp(){
-        lvl++;
-        damage += 6 * lvl;
+        damage += 2 * lvl;
         maxHealth += 8 * lvl;
         health = maxHealth;
         xp = xp - neededXp;
         neededXp += 10 * lvl;
 
-
+        lvl++;
     }
 
 
 
-    public void gainXp(int droppedXp){
+    public void gainXp(int droppedXp) throws IllegalArgumentException {
+        if(droppedXp < 0) throw new IllegalArgumentException("Xp cant be <0");
         xp += droppedXp;
         if(xp >= neededXp){
             levelUp();

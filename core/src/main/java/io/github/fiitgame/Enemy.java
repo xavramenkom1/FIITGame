@@ -20,7 +20,15 @@ public class Enemy {
     private Texture texture;
     protected Rectangle bounds;
 
-
+        public Enemy(int health, int damage, int lvl){ // ONLY FOR TESTING PURPOSES
+            this.health = health;
+            this.maxHealth = health;
+            this.damage = damage;
+            this.lvl = lvl;
+            position = new Vector2(0, 0);
+            this.bounds = new Rectangle(position.x, position.y, 32, 32);
+            this.texture = null;
+        }
 
         public Enemy(String texturePath ,int health, int damage, int lvl) {
             this.health = health;

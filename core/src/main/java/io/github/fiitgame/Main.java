@@ -21,7 +21,7 @@ public class Main extends Game {
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
-        player = new Player();
+        player = new Player(true);
         enemies.add(new Slime("textures/Enemies/slime.png", 30, 5, 1));
 
     }
