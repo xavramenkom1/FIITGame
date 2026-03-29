@@ -8,8 +8,8 @@ public class MageProjectile extends Projectile{
 
     public MageProjectile(String texturePath, Vector2 position, Vector2 direction, int damage){
         super(texturePath, position, direction, damage);
-        this.speed = 200;
-        acceleration = 0.02f;
+        this.speed = 130;
+        acceleration = 0.01f;
     }
     @Override
     public void update(float delta){
