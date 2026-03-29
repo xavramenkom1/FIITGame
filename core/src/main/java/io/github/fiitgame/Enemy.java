@@ -43,19 +43,19 @@ public class Enemy {
             int side = MathUtils.random(3);
 
             switch(side) {
-                case 0: // левый край
+                case 0: // Left
                     x = (float)(Math.random() * Gdx.graphics.getWidth() / 5f);
                     y = (float)(Math.random() * Gdx.graphics.getHeight());
                     break;
-                case 1: // правый край
+                case 1: // Right
                     x = Gdx.graphics.getWidth() - (float)(Math.random() * Gdx.graphics.getWidth() / 5f);
                     y = (float)(Math.random() * Gdx.graphics.getHeight());
                     break;
-                case 2: // нижний край
+                case 2: // Down
                     x = (float)(Math.random() * Gdx.graphics.getWidth());
                     y = (float)(Math.random() * Gdx.graphics.getHeight() / 5f);
                     break;
-                case 3: // верхний край
+                case 3: // Up
                     x = (float)(Math.random() * Gdx.graphics.getWidth());
                     y = Gdx.graphics.getHeight() - (float)(Math.random() * Gdx.graphics.getHeight() / 5f);
                     break;
