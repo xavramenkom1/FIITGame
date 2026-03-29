@@ -43,7 +43,7 @@ public class Enemy {
             int side = MathUtils.random(3);
 
             switch(side) {
-                case 0: // Left
+                case 0: // Left.
                     x = (float)(Math.random() * Gdx.graphics.getWidth() / 5f);
                     y = (float)(Math.random() * Gdx.graphics.getHeight());
                     break;

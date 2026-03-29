@@ -11,7 +11,7 @@ public class MageProjectile extends Projectile{
         this.speed = 200;
         acceleration = 0.02f;
     }
-
+    @Override
     public void update(float delta){
         super.update(delta);
         speed += acceleration * speed;

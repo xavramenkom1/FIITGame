@@ -16,14 +16,13 @@ import static io.github.fiitgame.EventListener.*;
 public class Main extends Game {
     static Player player;
     SpriteBatch spriteBatch;
-    List<Projectile> projectiles = new ArrayList<>();
-    List<Enemy> enemies = new ArrayList<>();
+    EventListener eventListener;
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
         player = new Player(true);
+        eventListener = new EventListener();
         enemies.add(new Slime("textures/Enemies/slime.png", 30, 5, 1));
-
     }
 
     @Override
@@ -62,7 +61,7 @@ public class Main extends Game {
             projectile.update(delta);
             projectile.render(spriteBatch);
         }
-        projectileCollisionCheck(projectiles, enemies);
+        projectileCollisionCheck();
 
         spriteBatch.end();
 
