@@ -33,7 +33,7 @@ public class Main extends Game {
             try{
                 projectiles.add(player.attack());
             }
-            catch (NoManaException e){
+            catch (AttackException e){
                 System.out.println("Not enough mana!");
             }
         }
@@ -43,7 +43,6 @@ public class Main extends Game {
         float delta = Gdx.graphics.getDeltaTime();
 
         // Player
-        System.out.println(String.format("%d/%d", player.getMana(), player.getMaxMana()));
         player.update(delta);
         spriteBatch.begin();
         player.render(spriteBatch);

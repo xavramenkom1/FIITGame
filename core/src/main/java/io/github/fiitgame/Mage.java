@@ -31,7 +31,6 @@ public class Mage extends Player {
         mana = Math.min(mana, maxMana);
     }
 
-    @Override
     public Projectile attack() throws NoManaException {
         float cost = 20;
 
@@ -51,6 +50,7 @@ public class Mage extends Player {
             damage
         );
     }
+
 
     public int getMana() {
         return (int) mana;

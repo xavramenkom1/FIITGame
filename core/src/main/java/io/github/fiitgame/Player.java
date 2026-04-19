@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Player {
@@ -68,9 +69,9 @@ public abstract class Player {
         if (sprite != null) {
             batch.draw(sprite, position.x, position.y);
         }
-    }
+    };
 
-    public abstract Projectile attack() throws Exception;
+    public abstract Projectile attack() throws AttackException;
 
     public Vector2 getPosition() {
         return position;
