@@ -2,36 +2,31 @@ package io.github.fiitgame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-import javax.management.InvalidAttributeValueException;
+public abstract class Player {
 
+    protected Vector2 position;
+    protected float speed;
 
-public class Player  {
-    private Vector2 position;
-    private float speed;
+    protected int damage;
+    protected int health;
+    protected int maxHealth;
+    protected int lvl;
+    protected int xp;
+    protected int neededXp;
 
-    private int damage;
-    private int health;
-    private int maxHealth;
-    private int lvl;
-    private int xp;
-    private int neededXp;
-    private boolean flip;
+    protected boolean flip;
 
-
-    private float mana;
-    private float maxMana;
-    private float manaRegeneration;
-
-
-    public Sprite sprite;
+    protected Sprite sprite;
 
     public Player(boolean initialiseGraphics) {
-        if(initialiseGraphics) { sprite = new Sprite(new Texture("textures/Player/mage-skin.png")); }
+        if (initialiseGraphics) {
+            // текстуру задаёт уже конкретный класс
+        }
+
         maxHealth = 100;
         health = 100;
         damage = 5;
@@ -39,20 +34,12 @@ public class Player  {
         xp = 0;
         neededXp = 100;
 
-        maxMana = 100f;
-        mana = 100f;
-        manaRegeneration = 12f;
-
         this.speed = 70;
-
         this.position = new Vector2(200, 200);
         flip = false;
     }
 
-
     public void update(float delta) {
-
-        // Inputs
 
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             position.x -= speed * delta;
@@ -68,66 +55,36 @@ public class Player  {
         if (Gdx.input.isKeyPressed(Input.Keys.S))
             position.y -= speed * delta;
 
-        if (!flip && !sprite.isFlipX()) {
-            sprite.flip(true, false);
-        } else if (flip && sprite.isFlipX()) {
-            sprite.flip(true, false);
+        if (sprite != null) {
+            if (!flip && !sprite.isFlipX()) {
+                sprite.flip(true, false);
+            } else if (flip && sprite.isFlipX()) {
+                sprite.flip(true, false);
+            }
         }
-
-        // Logic
-
-        mana += manaRegeneration * delta;
-        mana = Math.min(mana, maxMana);
-
     }
+
     public void render(SpriteBatch batch) {
-        batch.draw(sprite, position.x, position.y);
+        if (sprite != null) {
+            batch.draw(sprite, position.x, position.y);
+        }
     }
 
+    public abstract Projectile attack() throws Exception;
 
-    public Projectile attack() throws NoManaException {
-        if(mana < 20) throw new NoManaException("No mana");
-        mana -= 20;
-        float mouseX = Gdx.input.getX();
-        float mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
-
-        Vector2 direction = new Vector2(mouseX - position.x, mouseY - position.y);
-
-        float length = (float)Math.sqrt(direction.x * direction.x + direction.y * direction.y);
-
-        direction.x /= length;
-        direction.y /= length;
-
-        return new MageProjectile("textures/projectiles/mage-projectile.png", position, direction, damage);
-
+    public Vector2 getPosition() {
+        return position;
     }
 
-    public int getHealth(){
-        return health;
-    }
-
-    public int getMana(){
-        return (int)mana;
-    }
-    public int getMaxMana(){
-        return (int)maxMana;
-    }
-
-    public int getLvl(){
-        return lvl;
-    }
-    public int getXp(){
-        return xp;
-    }
-    public int getNeededXp(){
-        return neededXp;
-    }
-    public int getdamage(){
+    public int getDamage() {
         return damage;
     }
 
+    public int getHealth() {
+        return health;
+    }
 
-    private void levelUp(){
+    private void levelUp() {
         damage += 2 * lvl;
         maxHealth += 8 * lvl;
         health = maxHealth;
@@ -137,14 +94,12 @@ public class Player  {
         lvl++;
     }
 
+    public void gainXp(int droppedXp) {
+        if (droppedXp < 0) throw new IllegalArgumentException("Xp cant be <0");
 
-
-    public void gainXp(int droppedXp) throws IllegalArgumentException {
-        if(droppedXp < 0) throw new IllegalArgumentException("Xp cant be <0");
         xp += droppedXp;
-        if(xp >= neededXp){
+        if (xp >= neededXp) {
             levelUp();
         }
     }
-
 }

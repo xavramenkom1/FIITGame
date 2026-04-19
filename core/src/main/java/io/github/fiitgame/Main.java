@@ -20,7 +20,7 @@ public class Main extends Game {
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
-        player = new Player(true);
+        player = new Mage(true);
         eventListener = new EventListener();
         enemies.add(new Slime("textures/Enemies/slime.png", 30, 5, 1));
     }

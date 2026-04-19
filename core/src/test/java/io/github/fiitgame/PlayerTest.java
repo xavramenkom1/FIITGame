@@ -11,7 +11,7 @@ public class PlayerTest {
 
     @Test
     void gainXpTest(){
-        Player player = new Player(false);
+        Player player = new Mage(false);
         player.gainXp(50);
         assertEquals(50, player.getXp());
         assertEquals(1, player.getLvl());
@@ -24,7 +24,7 @@ public class PlayerTest {
 
     @Test
     void LevelUpTest() throws IllegalArgumentException {
-        Player player = new Player(false);
+        Player player = new Mage(false);
         player.gainXp(150); // Should level up to level 2
         assertEquals(2, player.getLvl());
         assertEquals(50, player.getXp());
