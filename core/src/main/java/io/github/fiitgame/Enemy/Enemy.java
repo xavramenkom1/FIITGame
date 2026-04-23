@@ -6,8 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import io.github.fiitgame.Main;
 
-public class Enemy {
+public abstract class Enemy {
 
     private int health;
     private int maxHealth;
@@ -15,7 +16,7 @@ public class Enemy {
     private int lvl;
     protected Vector2 position;
     protected float speed;
-    private int droppedXp;
+    protected int droppedXp;
 
     private Texture texture;
     protected Rectangle bounds;
@@ -76,9 +77,17 @@ public class Enemy {
                 health = 0;
             }
         }
+
+
         void move(float delta){
+            Vector2 playerPos = Main.player.getPosition();
+            Vector2 direction = new Vector2(playerPos.x - position.x, playerPos.y - position.y).nor();
+            position.x += direction.x * speed * delta;
+            position.y += direction.y * speed * delta;
             bounds.setPosition(position.x, position.y);
+
         }
+
 
 
         public int getHealth() {
@@ -106,5 +115,9 @@ public class Enemy {
         public void render(SpriteBatch batch){
             batch.draw(texture, position.x, position.y);
         }
+
+    private static int calculateXp(int lvl) {
+        return 10 * lvl;
+    }
 }
 
