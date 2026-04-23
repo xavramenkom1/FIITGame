@@ -1,8 +1,10 @@
-package io.github.fiitgame;
+package io.github.fiitgame.Player;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import io.github.fiitgame.Exceptions.MeleeException;
+import io.github.fiitgame.Projectiles.Projectile;
 
 public class Melee extends Player {
 
@@ -33,7 +35,7 @@ public class Melee extends Player {
         }
     }
 
-    public Projectile attack() throws MeleeException{
+    public Projectile attack() throws MeleeException {
         if (cooldownTimer > 0) return null;
 
         cooldownTimer = attackCooldown;

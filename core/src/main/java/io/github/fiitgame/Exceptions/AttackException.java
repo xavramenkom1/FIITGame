@@ -1,4 +1,4 @@
-package io.github.fiitgame;
+package io.github.fiitgame.Exceptions;
 
 public class AttackException extends Exception {
     public AttackException(String message) {

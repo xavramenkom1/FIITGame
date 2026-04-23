@@ -1,9 +1,12 @@
-package io.github.fiitgame;
+package io.github.fiitgame.Player;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import io.github.fiitgame.Projectiles.MageProjectile;
+import io.github.fiitgame.Exceptions.NoManaException;
+import io.github.fiitgame.Projectiles.Projectile;
 
 public class Mage extends Player {
 

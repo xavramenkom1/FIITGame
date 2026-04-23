@@ -5,16 +5,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import io.github.fiitgame.Enemy.Enemy;
+import io.github.fiitgame.Enemy.Slime;
+import io.github.fiitgame.Exceptions.AttackException;
+import io.github.fiitgame.Listeners.EventListener;
+import io.github.fiitgame.Player.Mage;
+import io.github.fiitgame.Player.Player;
+import io.github.fiitgame.Projectiles.Projectile;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static io.github.fiitgame.EventListener.*;
+import static io.github.fiitgame.Listeners.EventListener.*;
 
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
-    static Player player;
+    public static Player player;
     SpriteBatch spriteBatch;
     EventListener eventListener;
     @Override

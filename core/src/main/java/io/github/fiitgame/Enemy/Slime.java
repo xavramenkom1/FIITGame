@@ -1,4 +1,4 @@
-package io.github.fiitgame;
+package io.github.fiitgame.Enemy;
 
 
 import com.badlogic.gdx.math.Rectangle;

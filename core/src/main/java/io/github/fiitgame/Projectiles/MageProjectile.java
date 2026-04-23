@@ -1,8 +1,8 @@
-package io.github.fiitgame;
+package io.github.fiitgame.Projectiles;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class MageProjectile extends Projectile{
+public class MageProjectile extends Projectile {
 
     private float acceleration;
 

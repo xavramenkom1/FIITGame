@@ -1,6 +1,8 @@
-package io.github.fiitgame;
+package io.github.fiitgame.Listeners;
 
 import com.badlogic.gdx.math.Vector2;
+import io.github.fiitgame.Enemy.Enemy;
+import io.github.fiitgame.Projectiles.Projectile;
 
 import java.util.ArrayList;
 import java.util.List;

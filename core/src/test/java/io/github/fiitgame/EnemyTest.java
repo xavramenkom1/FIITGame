@@ -1,5 +1,6 @@
 package io.github.fiitgame;
 
+import io.github.fiitgame.Enemy.Enemy;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

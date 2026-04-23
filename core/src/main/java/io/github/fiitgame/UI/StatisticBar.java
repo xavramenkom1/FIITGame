@@ -1,4 +1,4 @@
-package io.github.fiitgame;
+package io.github.fiitgame.UI;
 
 public class StatisticBar {
 

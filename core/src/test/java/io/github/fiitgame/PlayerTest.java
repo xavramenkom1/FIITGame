@@ -1,8 +1,8 @@
 package io.github.fiitgame;
 
+import io.github.fiitgame.Player.Mage;
+import io.github.fiitgame.Player.Player;
 import org.junit.jupiter.api.Test;
-
-import javax.management.InvalidAttributeValueException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

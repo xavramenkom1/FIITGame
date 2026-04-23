@@ -1,4 +1,4 @@
-package io.github.fiitgame;
+package io.github.fiitgame.Projectiles;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
