@@ -56,6 +56,7 @@ public class Enemy {
                     y = (float)(Math.random() * Gdx.graphics.getHeight() / 5f);
                     break;
                 case 3: // Up
+
                     x = (float)(Math.random() * Gdx.graphics.getWidth());
                     y = Gdx.graphics.getHeight() - (float)(Math.random() * Gdx.graphics.getHeight() / 5f);
                     break;

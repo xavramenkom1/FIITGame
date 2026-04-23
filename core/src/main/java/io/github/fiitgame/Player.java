@@ -103,4 +103,14 @@ public abstract class Player {
             levelUp();
         }
     }
+
+    public int getXp() {
+        return xp;
+    }
+    public int getLvl(){
+        return lvl;
+    }
+    public int getNeededXp() {
+        return neededXp;
+    }
 }

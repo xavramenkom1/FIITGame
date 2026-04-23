@@ -29,12 +29,12 @@ public class PlayerTest {
         assertEquals(2, player.getLvl());
         assertEquals(50, player.getXp());
         assertEquals(108, player.getHealth());
-        assertEquals(7, player.getdamage());
+        assertEquals(7, player.getDamage());
 
         player.gainXp(60);
         assertEquals(0, player.getXp());
         assertEquals(124, player.getHealth());
-        assertEquals(11, player.getdamage());
+        assertEquals(11, player.getDamage());
         assertEquals(3, player.getLvl());
     }
 }

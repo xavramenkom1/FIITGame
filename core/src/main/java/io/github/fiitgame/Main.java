@@ -27,7 +27,6 @@ public class Main extends Game {
 
     @Override
     public void render() {
-
         ScreenUtils.clear(255, 255, 255, 1, true);
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
             try{
