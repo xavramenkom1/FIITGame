@@ -42,20 +42,8 @@ public abstract class Player {
     }
 
     public void update(float delta) {
-
-        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            position.x -= speed * delta;
-            flip = true;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            position.x += speed * delta;
-            flip = false;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.W))
-            position.y += speed * delta;
-
-        if (Gdx.input.isKeyPressed(Input.Keys.S))
-            position.y -= speed * delta;
+        handleMovementInput(delta);
+        handleAttackInput();
 
         if (sprite != null) {
             if (!flip && !sprite.isFlipX()) {
@@ -71,6 +59,24 @@ public abstract class Player {
             batch.draw(sprite, position.x, position.y);
         }
     };
+
+    protected void handleMovementInput(float delta){
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+            position.x -= speed * delta;
+            flip = true;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+            position.x += speed * delta;
+            flip = false;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W))
+            position.y += speed * delta;
+
+        if (Gdx.input.isKeyPressed(Input.Keys.S))
+            position.y -= speed * delta;
+    }
+
+    protected abstract void handleAttackInput();
 
     public abstract Projectile attack() throws AttackException;
 

@@ -1,9 +1,12 @@
 package io.github.fiitgame.Player;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import io.github.fiitgame.Exceptions.AttackException;
+import io.github.fiitgame.Listeners.EventListener;
 import io.github.fiitgame.Projectiles.MageProjectile;
 import io.github.fiitgame.Exceptions.NoManaException;
 import io.github.fiitgame.Projectiles.Projectile;
@@ -54,7 +57,16 @@ public class Mage extends Player {
         );
     }
 
-
+    @Override
+    protected void handleAttackInput() {
+        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+            try {
+                EventListener.projectiles.add(attack());
+            } catch (AttackException e) {
+                System.out.println("Not enough mana!");
+            }
+        }
+    }
     public int getMana() {
         return (int) mana;
     }
