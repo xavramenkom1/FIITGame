@@ -120,4 +120,8 @@ public abstract class Player {
     public int getNeededXp() {
         return neededXp;
     }
+
+    public float getMaxHealth() {
+        return maxHealth;
+    }
 }

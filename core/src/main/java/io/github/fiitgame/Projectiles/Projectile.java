@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import io.github.fiitgame.Main;
 
 
 public class Projectile {
@@ -18,7 +19,7 @@ public class Projectile {
     private Rectangle bounds;
 
     public Projectile(String texturePath, Vector2 position, Vector2 direction, int damage) {
-        texture = new Texture(texturePath);
+        texture = Main.assets.get(texturePath, Texture.class);
         this.position = new Vector2(position);
 
         this.direction = new Vector2(direction).nor();
@@ -58,6 +59,10 @@ public class Projectile {
 
     public boolean collides(Rectangle enemy){
         return bounds.overlaps(enemy);
+    }
+
+    public void dispose(){
+        texture.dispose();
     }
 
 }

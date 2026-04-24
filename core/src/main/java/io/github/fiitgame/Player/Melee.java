@@ -35,6 +35,11 @@ public class Melee extends Player {
         }
     }
 
+    @Override
+    protected void handleAttackInput() {
+        // Todo
+    }
+
     public Projectile attack() throws MeleeException {
         if (cooldownTimer > 0) return null;
 

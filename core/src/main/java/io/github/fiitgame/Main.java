@@ -3,6 +3,8 @@ package io.github.fiitgame;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.fiitgame.Enemy.Enemy;
@@ -12,6 +14,7 @@ import io.github.fiitgame.Listeners.EventListener;
 import io.github.fiitgame.Player.Mage;
 import io.github.fiitgame.Player.Player;
 import io.github.fiitgame.Projectiles.Projectile;
+import io.github.fiitgame.UI.StatisticBar;
 import io.github.fiitgame.WaveSystem.Wave;
 
 import static io.github.fiitgame.Listeners.EventListener.*;
@@ -23,6 +26,9 @@ public class Main extends Game {
     //======= Fields =======
 
     public static Player player;
+    public static AssetManager assets;
+    StatisticBar statisticBar;
+
     SpriteBatch spriteBatch;
     EventListener eventListener;
     Wave currentWave;
@@ -35,10 +41,19 @@ public class Main extends Game {
 
     @Override
     public void create() {
+
+        assets = new AssetManager();
+        assets.load("textures/Enemies/slime.png", Texture.class);
+        assets.load("textures/Player/mage-skin.png", Texture.class);
+        assets.load("textures/projectiles/mage-projectile.png", Texture.class);
+        assets.finishLoading();
+
         spriteBatch = new SpriteBatch();
         player = new Mage(true);
         eventListener = new EventListener();
         currentWave = new Wave(1);
+
+        statisticBar = new StatisticBar(player);
     }
 
 
@@ -82,9 +97,13 @@ public class Main extends Game {
         }
         projectileCollisionCheck();
 
+
         spriteBatch.end();
 
+
         // UI
+        statisticBar.render();
+
     }
 
     //======= Dispose =======
@@ -93,5 +112,9 @@ public class Main extends Game {
     @Override
     public void dispose() {
         spriteBatch.dispose();
+
+        assets.dispose();
+
+        statisticBar.dispose();
     }
 }

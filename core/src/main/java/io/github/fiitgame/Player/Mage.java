@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Exceptions.AttackException;
 import io.github.fiitgame.Listeners.EventListener;
+import io.github.fiitgame.Main;
 import io.github.fiitgame.Projectiles.MageProjectile;
 import io.github.fiitgame.Exceptions.NoManaException;
 import io.github.fiitgame.Projectiles.Projectile;
@@ -21,7 +22,7 @@ public class Mage extends Player {
         super(initialiseGraphics);
 
         if (initialiseGraphics) {
-            sprite = new Sprite(new Texture("textures/Player/mage-skin.png"));
+            sprite = new Sprite(Main.assets.get("textures/Player/mage-skin.png", Texture.class));
         }
 
         maxMana = 100f;
