@@ -18,6 +18,16 @@ public class Projectile {
     private Texture texture;
     private Rectangle bounds;
 
+
+    public Projectile(float x, float y, float w, float h, int damage) { // Only for testing purposes
+        this.position = new Vector2(x, y);
+        this.direction = new Vector2(1, 0);
+        this.damage = damage;
+        this.texture = null;
+        this.bounds = new Rectangle(x, y, w, h);
+    }
+
+
     public Projectile(String texturePath, Vector2 position, Vector2 direction, int damage) {
         texture = Main.assets.get(texturePath, Texture.class);
         this.position = new Vector2(position);
