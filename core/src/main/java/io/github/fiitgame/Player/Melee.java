@@ -13,7 +13,7 @@ public class Melee extends Player {
     private float cooldownTimer;
 
     public Melee(boolean initialiseGraphics) {
-        super(initialiseGraphics);
+        super();
 
         if (initialiseGraphics) {
             sprite = new Sprite(new Texture("textures/Player/melee-skin.png"));

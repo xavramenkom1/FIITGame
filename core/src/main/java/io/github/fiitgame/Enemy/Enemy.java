@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Main;
 
+import static io.github.fiitgame.Listeners.EventListener.player;
+
 public abstract class Enemy {
 
     private int health;
@@ -37,6 +39,7 @@ public abstract class Enemy {
         this.damage = damage;
         this.lvl = lvl;
         this.texture = Main.assets.get(texturePath, Texture.class);
+        this.bounds = new Rectangle(position.x, position.y, getTexture().getWidth(), getTexture().getHeight());
 
         float x = 0;
         float y = 0;
@@ -69,6 +72,10 @@ public abstract class Enemy {
         move(delta);
         bounds.setPosition(position);
     }
+    public void render(SpriteBatch batch) {
+        batch.draw(texture, position.x, position.y);
+    }
+
 
 
     public void takeDamage(int damage) {
@@ -80,7 +87,7 @@ public abstract class Enemy {
 
 
     void move(float delta) {
-        Vector2 playerPos = Main.player.getPosition();
+        Vector2 playerPos = player.getPosition();
         Vector2 direction = new Vector2(playerPos.x - position.x, playerPos.y - position.y).nor();
         position.x += direction.x * speed * delta;
         position.y += direction.y * speed * delta;
@@ -105,16 +112,12 @@ public abstract class Enemy {
         return bounds;
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
     public boolean isDead() {
         return health <= 0;
-    }
-
-    private void die() {
-
-    }
-
-    public void render(SpriteBatch batch) {
-        batch.draw(texture, position.x, position.y);
     }
 
     private static int calculateXp(int lvl) {

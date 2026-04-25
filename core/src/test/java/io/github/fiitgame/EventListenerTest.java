@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Rectangle;
 import io.github.fiitgame.Enemy.Enemy;
 import io.github.fiitgame.Listeners.EventListener;
 import io.github.fiitgame.Player.Mage;
+import io.github.fiitgame.Player.Player;
 import io.github.fiitgame.Projectiles.Projectile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class EventListenerTest {
     @BeforeEach
     void setUp() {
         new EventListener();
-        Main.player = new Mage(false);
+        Player player = new Mage(false);
     }
 
     @Test

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Exceptions.AttackException;
 import io.github.fiitgame.Listeners.EventListener;
@@ -19,12 +20,17 @@ public class Mage extends Player {
     private float manaRegeneration;
 
     public Mage(boolean initialiseGraphics) {
-        super(initialiseGraphics);
+        super();
+
+        health = 100;
+        maxHealth = 100;
+        maxMana = 100;
+        damage = 12;
+        speed = 65f;
 
         if (initialiseGraphics) {
             sprite = new Sprite(Main.assets.get("textures/Player/mage-skin.png", Texture.class));
         }
-
         maxMana = 100f;
         mana = 100f;
         manaRegeneration = 12f;
