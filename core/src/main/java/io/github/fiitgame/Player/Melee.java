@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Exceptions.MeleeException;
 import io.github.fiitgame.Projectiles.Projectile;
 
+import static io.github.fiitgame.Main.assets;
+
 public class Melee extends Player {
 
     private float attackRange;
@@ -15,15 +17,19 @@ public class Melee extends Player {
     public Melee(boolean initialiseGraphics) {
         super();
 
+        health = 100;
+        maxHealth = 100;
+        damage = 10;
+        speed = 85f;
+
         if (initialiseGraphics) {
-            sprite = new Sprite(new Texture("textures/Player/melee-skin.png"));
+            sprite = new Sprite(new Texture("textures/Player/melle-texture.png"));
         }
 
         attackRange = 40f;
-        attackCooldown = 0.5f; // полсекунды
+        attackCooldown = 0.5f;
         cooldownTimer = 0f;
 
-        damage = 10; // сильнее мага
     }
 
     @Override
@@ -45,16 +51,14 @@ public class Melee extends Player {
 
         cooldownTimer = attackCooldown;
 
-        // направление удара (куда смотрит игрок)
         Vector2 direction = new Vector2(flip ? -1 : 1, 0);
 
-        // позиция удара перед игроком
         Vector2 attackPos = new Vector2(
             position.x + direction.x * attackRange,
             position.y
         );
         return new Projectile(
-            "textures/projectiles/melee-hit.png",
+            assets.get("textures/projectiles/melee-hit.png", Texture.class),
             attackPos,
             direction,
             damage

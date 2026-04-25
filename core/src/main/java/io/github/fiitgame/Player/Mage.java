@@ -13,6 +13,8 @@ import io.github.fiitgame.Projectiles.MageProjectile;
 import io.github.fiitgame.Exceptions.NoManaException;
 import io.github.fiitgame.Projectiles.Projectile;
 
+import static io.github.fiitgame.Main.assets;
+
 public class Mage extends Player {
 
     private float mana;
@@ -22,14 +24,13 @@ public class Mage extends Player {
     public Mage(boolean initialiseGraphics) {
         super();
 
-        health = 100;
-        maxHealth = 100;
-        maxMana = 100;
+        health = 70;
+        maxHealth = 70;
         damage = 12;
         speed = 65f;
 
         if (initialiseGraphics) {
-            sprite = new Sprite(Main.assets.get("textures/Player/mage-skin.png", Texture.class));
+            sprite = new Sprite(assets.get("textures/Player/mage-texture.png", Texture.class));
         }
         maxMana = 100f;
         mana = 100f;
@@ -57,7 +58,7 @@ public class Mage extends Player {
         direction.nor();
 
         return new MageProjectile(
-            "textures/projectiles/mage-projectile.png",
+            assets.get("textures/projectiles/mage-projectile.png", Texture.class),
             position,
             direction,
             damage
@@ -76,5 +77,9 @@ public class Mage extends Player {
     }
     public int getMana() {
         return (int) mana;
+    }
+
+    public float getMaxMana() {
+        return maxMana;
     }
 }

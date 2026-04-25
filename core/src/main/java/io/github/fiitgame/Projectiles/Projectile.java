@@ -1,6 +1,7 @@
 package io.github.fiitgame.Projectiles;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -15,7 +16,7 @@ public class Projectile {
 
     private int damage;
 
-    private Texture texture;
+    protected Sprite sprite;
     private Rectangle bounds;
 
 
@@ -23,20 +24,19 @@ public class Projectile {
         this.position = new Vector2(x, y);
         this.direction = new Vector2(1, 0);
         this.damage = damage;
-        this.texture = null;
         this.bounds = new Rectangle(x, y, w, h);
     }
 
 
-    public Projectile(String texturePath, Vector2 position, Vector2 direction, int damage) {
-        texture = Main.assets.get(texturePath, Texture.class);
+    public Projectile(Texture texture, Vector2 position, Vector2 direction, int damage) {
+        sprite = new Sprite(texture);
         this.position = new Vector2(position);
 
         this.direction = new Vector2(direction).nor();
 
         this.damage = damage;
 
-        this.bounds = new Rectangle(position.x, position.y, this.texture.getWidth(), this.texture.getHeight());
+        this.bounds = new Rectangle(position.x, position.y, this.sprite.getWidth(), this.sprite.getHeight());
     }
 
     public void setPosition(Vector2 position) {
@@ -63,16 +63,13 @@ public class Projectile {
     }
 
     public void render(SpriteBatch spriteBatch){
-        spriteBatch.draw(texture, position.x, position.y);
+        sprite.setPosition(position.x, position.y);
+        sprite.draw(spriteBatch);
 
     }
 
     public boolean collides(Rectangle enemy){
         return bounds.overlaps(enemy);
-    }
-
-    public void dispose(){
-        texture.dispose();
     }
 
 }

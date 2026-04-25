@@ -29,7 +29,7 @@ public class Main extends Game {
     private void loadAssets() {
         assets = new AssetManager();
         assets.load("textures/Enemies/slime.png", Texture.class);
-        assets.load("textures/Player/mage-skin.png", Texture.class);
+        assets.load("textures/Player/mage-texture.png", Texture.class);
         assets.load("textures/projectiles/mage-projectile.png", Texture.class);
         assets.finishLoading();
     }

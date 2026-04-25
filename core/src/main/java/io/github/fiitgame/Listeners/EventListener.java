@@ -8,9 +8,10 @@ import io.github.fiitgame.Projectiles.Projectile;
 import java.util.ArrayList;
 import java.util.List;
 
+import static io.github.fiitgame.Screens.GameScreen.player;
+
 public class EventListener {
 
-    public static Player player;
 
     public static List<Projectile> projectiles;
     public static List<Projectile> enemyProjectiles;
@@ -57,19 +58,19 @@ public class EventListener {
         }
     }
     public static void enemyProjectileCollisionCheck() {
-        if (player == null || player.isDead()) {
-            return;
-        }
-
-        for (int i = 0; i < enemyProjectiles.size(); i++) {
-            Projectile projectile = enemyProjectiles.get(i);
-
-            if (projectile.collides(player.getBounds())) {
-                player.takeDamage(projectile.getDamage());
-                enemyProjectiles.remove(i);
-                i--;
-            }
-        }
+//        if (player == null || player.isDead()) {
+//            return;
+//        }
+//
+//        for (int i = 0; i < enemyProjectiles.size(); i++) {
+//            Projectile projectile = enemyProjectiles.get(i);
+//
+//            if (projectile.collides(player.getBounds())) {
+//                player.takeDamage(projectile.getDamage());
+//                enemyProjectiles.remove(i);
+//                i--;
+//            }
+//        }
     }
 
 }

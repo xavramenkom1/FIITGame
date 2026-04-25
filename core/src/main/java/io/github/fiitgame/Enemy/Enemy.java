@@ -8,7 +8,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Main;
 
-import static io.github.fiitgame.Listeners.EventListener.player;
+import static io.github.fiitgame.Screens.GameScreen.player;
+
 
 public abstract class Enemy {
 
@@ -39,7 +40,7 @@ public abstract class Enemy {
         this.damage = damage;
         this.lvl = lvl;
         this.texture = Main.assets.get(texturePath, Texture.class);
-        this.bounds = new Rectangle(position.x, position.y, getTexture().getWidth(), getTexture().getHeight());
+
 
         float x = 0;
         float y = 0;
@@ -66,6 +67,7 @@ public abstract class Enemy {
                 break;
         }
         this.position = new Vector2(x, y);
+        this.bounds = new Rectangle(position.x, position.y, getTexture().getWidth(), getTexture().getHeight());
     }
 
     public void update(float delta) {

@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.fiitgame.Enemy.Enemy;
+import io.github.fiitgame.Enemy.Slime;
 import io.github.fiitgame.Player.*;
 import io.github.fiitgame.Projectiles.Projectile;
 import io.github.fiitgame.UI.StatisticBar;
@@ -26,7 +27,7 @@ public class GameScreen implements Screen {
 
     private SpriteBatch spriteBatch;
 
-    private Player player;
+    public static Player player;
     private EventListener eventListener;
 
     private Wave currentWave;
@@ -99,6 +100,9 @@ public class GameScreen implements Screen {
         // ======= Game Over =======
         if (player.isDead()) {
             game.setScreen(new GameOverScreen(game));
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            enemies.add(new Slime("textures/Enemies/slime.png", 20 + player.getLvl() * 10, 3 + player.getLvl(), player.getLvl()));
         }
     }
 
