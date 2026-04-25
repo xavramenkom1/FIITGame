@@ -42,11 +42,7 @@ public class Main extends Game {
     @Override
     public void create() {
 
-        assets = new AssetManager();
-        assets.load("textures/Enemies/slime.png", Texture.class);
-        assets.load("textures/Player/mage-skin.png", Texture.class);
-        assets.load("textures/projectiles/mage-projectile.png", Texture.class);
-        assets.finishLoading();
+        loadAssets();
 
         spriteBatch = new SpriteBatch();
         player = new Mage(true);
@@ -106,6 +102,15 @@ public class Main extends Game {
 
     }
 
+
+    private void loadAssets() {
+        assets = new AssetManager();
+        assets.load("textures/Enemies/slime.png", Texture.class);
+        assets.load("textures/Player/mage-skin.png", Texture.class);
+        assets.load("textures/projectiles/mage-projectile.png", Texture.class);
+        assets.finishLoading();
+    }
+
     //======= Dispose =======
 
 
@@ -117,4 +122,5 @@ public class Main extends Game {
 
         statisticBar.dispose();
     }
+
 }
