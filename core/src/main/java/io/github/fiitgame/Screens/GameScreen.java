@@ -52,6 +52,9 @@ public class GameScreen implements Screen {
             case WARRIOR:
                 player = new Melee(true);
                 break;
+            case ARCHER:
+                player = new Archer(true);
+                break;
         }
         statisticBar = new StatisticBar(player);
         eventListener = new EventListener();
@@ -87,6 +90,7 @@ public class GameScreen implements Screen {
         projectileCollisionCheck();
         enemyPlayerCollisionCheck();
         enemyProjectileCollisionCheck();
+        checkActiveProjectiles();
 
         // ======= UI =======
         statisticBar.render();

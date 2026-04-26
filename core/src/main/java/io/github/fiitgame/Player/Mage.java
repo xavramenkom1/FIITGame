@@ -82,4 +82,10 @@ public class Mage extends Player {
     public float getMaxMana() {
         return maxMana;
     }
+
+    protected void levelUp(){
+        super.levelUp();
+        maxMana += 10;
+        manaRegeneration += 3f;
+    }
 }

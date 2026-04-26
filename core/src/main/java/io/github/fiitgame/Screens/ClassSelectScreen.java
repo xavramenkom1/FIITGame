@@ -30,7 +30,8 @@ public class ClassSelectScreen implements Screen {
         batch.begin();
         font.draw(batch, "Choose class:", 100, 300);
         font.draw(batch, "1 - Mage", 100, 250);
-        font.draw(batch, "2 - Warrior", 100, 200);
+        font.draw(batch, "2 - Melee", 100, 200);
+        font.draw(batch, "3 - Archer", 100, 150);
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
@@ -39,6 +40,9 @@ public class ClassSelectScreen implements Screen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)) {
             game.setScreen(new GameScreen(game, PlayerClass.WARRIOR));
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.NUM_3)) {
+            game.setScreen(new GameScreen(game, PlayerClass.ARCHER));
         }
     }
 

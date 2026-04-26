@@ -19,6 +19,8 @@ public class Projectile {
     protected Sprite sprite;
     private Rectangle bounds;
 
+    private boolean active;
+
 
     public Projectile(float x, float y, float w, float h, int damage) { // Only for testing purposes
         this.position = new Vector2(x, y);
@@ -45,6 +47,8 @@ public class Projectile {
     public void setDirection(Vector2 direction){
         this.direction = new Vector2(direction);
     }
+    public void setSpeed(float speed) {this.speed = speed;}
+    public void setSize(float ratio) { this.sprite.setSize(ratio * sprite.getWidth(), ratio * sprite.getHeight()); }
 
     public Vector2 getPosition(){
         return new Vector2(position);
@@ -70,6 +74,13 @@ public class Projectile {
 
     public boolean collides(Rectangle enemy){
         return bounds.overlaps(enemy);
+    }
+
+    public boolean isActive(){
+        return active;
+    }
+    public void setActive(boolean active){
+        this.active = active;
     }
 
 }

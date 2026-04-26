@@ -30,6 +30,8 @@ public class Main extends Game {
         assets = new AssetManager();
         assets.load("textures/Enemies/slime.png", Texture.class);
         assets.load("textures/Player/mage-texture.png", Texture.class);
+        assets.load("textures/Player/archer-texture.png", Texture.class);
+        assets.load("textures/projectiles/arrow.png", Texture.class);
         assets.load("textures/projectiles/mage-projectile.png", Texture.class);
         assets.finishLoading();
     }

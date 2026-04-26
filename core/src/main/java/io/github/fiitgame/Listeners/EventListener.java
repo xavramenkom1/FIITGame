@@ -72,5 +72,14 @@ public class EventListener {
 //            }
 //        }
     }
+    public static void checkActiveProjectiles(){
+        for (int i = 0; i < projectiles.size(); i++) {
+            Projectile projectile = projectiles.get(i);
+            if(!projectile.isActive()){
+                projectiles.remove(i);
+                i--;
+            }
+        }
+    }
 
 }

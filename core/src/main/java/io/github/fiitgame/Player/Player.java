@@ -73,11 +73,11 @@ public abstract class Player {
     protected void handleMovementInput(float delta){
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             position.x -= speed * delta;
-            flip = true;
+            flip = false;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             position.x += speed * delta;
-            flip = false;
+            flip = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W))
             position.y += speed * delta;
@@ -90,7 +90,7 @@ public abstract class Player {
 
     public abstract Projectile attack() throws AttackException;
 
-    private void levelUp() {
+    protected void levelUp() {
         damage += 2 * lvl;
         maxHealth += 8 * lvl;
         health = maxHealth;
