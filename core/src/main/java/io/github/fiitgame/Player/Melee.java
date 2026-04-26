@@ -57,18 +57,8 @@ public class Melee extends Player {
             position.x + direction.x * attackRange,
             position.y
         );
-        return new Projectile(
-            assets.get("textures/projectiles/melee-hit.png", Texture.class),
-            attackPos,
-            direction,
-            damage
-        );
+        return new Projectile(assets.get("textures/projectiles/melee-hit.png", Texture.class), attackPos, direction, damage);
 
-//        return new MeleeProjectile(
-//            "textures/projectiles/melee-hit.png",
-//            attackPos,
-//            direction,
-//            damage
-//        );
+        //return new MeleeProjectile("textures/projectiles/melee-hit.png", attackPos, direction, damage);
     }
 }
