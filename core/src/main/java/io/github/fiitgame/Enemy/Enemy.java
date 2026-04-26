@@ -10,6 +10,13 @@ import io.github.fiitgame.Main;
 
 import static io.github.fiitgame.Screens.GameScreen.player;
 
+/**
+ * The Enemy class is an abstract class that represents a generic enemy in the game.
+ * It implements the EnemyInterface and provides common properties and methods for all enemy types, such as health, damage, movement, and rendering.
+ *
+ *
+ */
+
 
 public abstract class Enemy implements EnemyInterface {
 
@@ -24,6 +31,13 @@ public abstract class Enemy implements EnemyInterface {
     private Texture texture;
     protected Rectangle bounds;
 
+    /**
+     * Constructor for tests
+     *
+     * @param health hp
+     * @param damage dmg
+     * @param lvl lvl
+     */
     public Enemy(int health, int damage, int lvl) { // ONLY FOR TESTING PURPOSES
         this.health = health;
         this.maxHealth = health;
@@ -34,6 +48,14 @@ public abstract class Enemy implements EnemyInterface {
         this.texture = null;
     }
 
+    /**
+     * Main constructor
+     *
+     * @param texturePath texture
+     * @param health hp
+     * @param damage dmg
+     * @param lvl lvl
+     */
     public Enemy(String texturePath, int health, int damage, int lvl) {
         this.health = health;
         this.maxHealth = health;
@@ -70,15 +92,28 @@ public abstract class Enemy implements EnemyInterface {
         this.bounds = new Rectangle(position.x, position.y, getTexture().getWidth(), getTexture().getHeight());
     }
 
+    /**
+     * Update function for Enemy logic
+     *
+     * @param delta time
+     */
     public void update(float delta) {
         move(delta);
         bounds.setPosition(position);
     }
+
+    /**
+     * Render function to render Enemy graphics
+     * @param batch renderer
+     */
     public void render(SpriteBatch batch) {
         batch.draw(texture, position.x, position.y);
     }
 
-
+    /**
+     * Function to apply damage to the enemy and update its health accordingly
+     * @param damage dmg
+     */
     @Override
     public void takeDamage(int damage) {
         health -= damage;
@@ -87,7 +122,11 @@ public abstract class Enemy implements EnemyInterface {
         }
     }
 
-
+    /**
+     * Function for enemy to move
+     *
+     * @param delta
+     */
     protected void move(float delta) {
         Vector2 playerPos = player.getPosition();
         Vector2 direction = new Vector2(playerPos.x - position.x, playerPos.y - position.y).nor();

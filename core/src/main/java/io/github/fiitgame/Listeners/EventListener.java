@@ -12,6 +12,10 @@ import java.util.List;
 
 import static io.github.fiitgame.Screens.GameScreen.player;
 
+/**
+ * Main listener class that calculates the whole collision logic in game.
+ */
+
 public class EventListener {
 
 
@@ -23,6 +27,12 @@ public class EventListener {
         enemies = new ArrayList<>();
     }
 
+    /**
+     * Method, that checks for collisions between projectiles and enemies.
+     * If a collision is detected, the enemy takes damage and the projectile is removed from the game.
+     * If the enemy's health drops to zero or below, it is removed from the game and the player gains experience points.
+     *
+     */
     public static void projectileCollisionCheck() {
         for (int i = 0; i < projectiles.size(); i++) {
             Projectile projectile = projectiles.get(i);
@@ -54,6 +64,12 @@ public class EventListener {
             }
         }
     }
+
+    /**
+     * Method that checks for collisions between the player and enemies.
+     * If a collision is detected, the player takes damage from the enemy.
+     */
+
     public static void enemyPlayerCollisionCheck() {
         if (player == null || player.isDead()) {
             return;
@@ -69,21 +85,10 @@ public class EventListener {
             }
         }
     }
-    public static void enemyProjectileCollisionCheck() {
-//        if (player == null || player.isDead()) {
-//            return;
-//        }
-//
-//        for (int i = 0; i < enemyProjectiles.size(); i++) {
-//            Projectile projectile = enemyProjectiles.get(i);
-//
-//            if (projectile.collides(player.getBounds())) {
-//                player.takeDamage(projectile.getDamage());
-//                enemyProjectiles.remove(i);
-//                i--;
-//            }
-//        }
-    }
+
+    /**
+     * Method that checks for non-active projectiles and deletes all of their kind
+     */
     public static void checkActiveProjectiles(){
         for (int i = 0; i < projectiles.size(); i++) {
             Projectile projectile = projectiles.get(i);

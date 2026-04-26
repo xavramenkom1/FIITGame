@@ -10,6 +10,9 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.fiitgame.Main;
 import io.github.fiitgame.Player.PlayerClass;
 
+/**
+ * Game over screen, where player can chose either to continue playing, or quit
+ */
 public class GameOverScreen implements Screen {
 
     private final Game game;

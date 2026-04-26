@@ -9,6 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.fiitgame.Screens.ClassSelectScreen;
 
+/**
+ * Pause screen
+ */
 public class PauseScreen implements Screen {
 
     private final Game game;

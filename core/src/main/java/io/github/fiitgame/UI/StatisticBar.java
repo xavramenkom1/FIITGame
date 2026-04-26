@@ -9,6 +9,12 @@ import io.github.fiitgame.Player.Archer;
 import io.github.fiitgame.Player.Mage;
 import io.github.fiitgame.Player.Player;
 
+/**
+ * Statistic bar class that shows all player stats like health, xp, mana and arrows.
+ * It is rendered in the top left corner of the screen and is updated every frame.
+ *
+ */
+
 public class StatisticBar {
 
     private final ShapeRenderer shapeRenderer;
@@ -22,6 +28,10 @@ public class StatisticBar {
     private static final float barPosX = 20f;
     private static final float barPosY = Gdx.graphics.getHeight() - 20f;
 
+    /**
+     * Constructor that initializes all renderers
+     * @param player to get player stats
+     */
     public StatisticBar(Player player) {
         this.player = player;
         this.shapeRenderer = new ShapeRenderer();
@@ -29,6 +39,10 @@ public class StatisticBar {
         font = new BitmapFont();
     }
 
+    /**
+     * Method that renders the statistic bar. It is called every frame in the GameScreen class.
+     * Renders Mana bar if player is a Mage, and Arrows bar if player is an Archer.
+     */
     public void render() {
         float hpRatio = (float) player.getHealth() / player.getMaxHealth();
         float xpRatio = (float) player.getXp() / player.getNeededXp();
@@ -65,6 +79,12 @@ public class StatisticBar {
         shapeRenderer.end();
     }
 
+    /**
+     * Method that renders the arrows bar for the Archer class.
+     * It shows how many arrows the player has left and if he is currently reloading.
+     * @param shapeRenderer renderer
+     * @param archer archer
+     */
     private void renderArrows(ShapeRenderer shapeRenderer, Archer archer) {
         float arrowsRatio = (float) archer.getArrowCount() / archer.getMaxArrowCount();
 
@@ -81,6 +101,12 @@ public class StatisticBar {
         }
     }
 
+    /**
+     * Method that renders the mana bar for the Mage class.
+     * It shows how much mana the player has left.
+     * @param shapeRenderer renderer
+     * @param mage mage
+     */
     private void renderMana(ShapeRenderer shapeRenderer, Mage mage) {
 
         float manaRatio = (float) mage.getMana() / mage.getMaxMana();

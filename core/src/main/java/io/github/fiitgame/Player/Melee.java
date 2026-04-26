@@ -12,12 +12,23 @@ import io.github.fiitgame.Projectiles.Projectile;
 
 import static io.github.fiitgame.Listeners.EventListener.projectiles;
 
+/**
+ * Melee player class. Has close range attacks and high health, but low damage and speed.
+ * Can attack by left-clicking, which creates a melee projectile that damages enemies in a small area around the player.
+ */
+
+
 public class Melee extends Player {
 
     private float attackRange;
     private float attackCooldown;
     private float cooldownTimer;
 
+    /**
+     * MMain constructor. Has highest speed among all classes and more health that other classes, but lower damage.
+     * Can attack by left-clicking, which creates a melee projectile that damages enemies in a small area around the player.
+     * @param initialiseGraphics for testing purposes
+     */
     public Melee(boolean initialiseGraphics) {
         super();
 
@@ -36,6 +47,10 @@ public class Melee extends Player {
 
     }
 
+    /**
+     * Update method that calculates logic depending on time
+     * @param delta time
+     */
     @Override
     public void update(float delta) {
         super.update(delta);
@@ -44,6 +59,11 @@ public class Melee extends Player {
             cooldownTimer -= delta;
         }
     }
+
+    /**
+     * Function to handle attack input.
+     * If left mouse button is pressed, it tries to attack and add the Melee (slash) projectile to projectiles.
+     */
 
     @Override
     protected void handleAttackInput() {
@@ -56,6 +76,12 @@ public class Melee extends Player {
             }
         }
     }
+
+    /**
+     * Attack function for close ranges
+     * @return returns melee projectile that lives for 0.2 sec
+     * @throws CoolDownException Being thrown if attack is on cooldown
+     */
     public Projectile attack() throws CoolDownException {
 
         if (cooldownTimer > 0) {

@@ -11,6 +11,9 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.fiitgame.Player.Player; // поправь путь если у тебя другой пакет
 import io.github.fiitgame.Player.PlayerClass;
 
+/**
+ * Game starting screen, where player can chose what class he wants to play
+ */
 public class ClassSelectScreen implements Screen {
 
     private final Game game;
@@ -23,6 +26,10 @@ public class ClassSelectScreen implements Screen {
         this.font = new BitmapFont();
     }
 
+    /**
+     * Method that renders text and listens for player input to select class
+     * @param delta time
+     */
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);

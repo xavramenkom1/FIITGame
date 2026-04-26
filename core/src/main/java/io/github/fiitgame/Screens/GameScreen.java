@@ -20,6 +20,13 @@ import java.util.List;
 
 import static io.github.fiitgame.Listeners.EventListener.*;
 
+/**
+ * Screen where the game is played. Contains the main game loop, where all the logic is calculated and rendered.
+ * Also contains the wave system, which spawns enemies in waves, increasing the difficulty as the player progresses.
+ * The player can pause the game by pressing the ESCAPE key, which will bring up the pause menu.
+ * If the player's health drops to zero, the game will end and the player
+ */
+
 public class GameScreen implements Screen {
 
     private final Game game;
@@ -41,6 +48,10 @@ public class GameScreen implements Screen {
         this.playerClass = playerClass;
     }
 
+    /**
+     * Method that identifies what class did player chose and sets it to the player variable.
+     * Also initializes the statistic bar, event listener and the first wave.
+     */
     @Override
     public void show() {
         spriteBatch = new SpriteBatch();
@@ -61,6 +72,11 @@ public class GameScreen implements Screen {
         currentWave = new Wave(1);
     }
 
+    /**
+     * Render function that is called every frame. It updates and renders the player, enemies, projectiles, statistic bar and wave system.
+     * Also checks all the collisions
+     * @param delta The time in seconds since the last render.
+     */
     @Override
     public void render(float delta) {
         ScreenUtils.clear(1, 1, 1, 1);
@@ -89,7 +105,6 @@ public class GameScreen implements Screen {
         // ======= Collision Checks =======
         projectileCollisionCheck();
         enemyPlayerCollisionCheck();
-        enemyProjectileCollisionCheck();
         checkActiveProjectiles();
 
         // ======= UI =======

@@ -7,16 +7,34 @@ import io.github.fiitgame.Listeners.EventListener;
 
 import static com.badlogic.gdx.math.MathUtils.random;
 
+
+/**
+ * The Wave class manages enemy waves in the game, controlling the timing and difficulty of enemy spawns.
+ *
+ *
+ * */
+
+
 public class Wave {
 
     private final int waveNumber;
     private float spawnTimer;
 
+    /**
+     * Creates a new wave instance.
+     *
+     * @param waveNumber current wave number, affects difficulty
+     */
+
     public Wave(int waveNumber) {
         this.waveNumber = waveNumber;
         spawnTimer = 8f;
     }
-
+    /**
+     * Updates wave state and handles enemy spawning.
+     *
+     * @param delta time since last frame
+     */
     public void update(float delta) {
         spawnTimer += delta;
 
@@ -27,7 +45,11 @@ public class Wave {
         }
 
     }
-
+    /**
+     * Makes random Waves
+     *
+     *
+     */
     private void spawnEnemies() {
         int lvl = waveNumber;
 

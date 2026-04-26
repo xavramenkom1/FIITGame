@@ -8,6 +8,10 @@ import io.github.fiitgame.Screens.ClassSelectScreen;
 
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
+
+/**
+ * Main class that loads all assetts, sets starting screen and disposes all assets when the game is closed.
+ */
 public class Main extends Game {
 
     public static AssetManager assets;

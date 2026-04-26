@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Exceptions.AttackException;
+import io.github.fiitgame.Exceptions.CoolDownException;
 import io.github.fiitgame.Listeners.EventListener;
 import io.github.fiitgame.Main;
 import io.github.fiitgame.Projectiles.MageProjectile;
@@ -15,12 +16,20 @@ import io.github.fiitgame.Projectiles.Projectile;
 
 import static io.github.fiitgame.Main.assets;
 
+/**
+ * Mage player class. Has lower health, but higher dps
+ */
 public class Mage extends Player {
 
     private float mana;
     private float maxMana;
     private float manaRegeneration;
 
+    /**
+     * Main constructor
+     *
+     * @param initialiseGraphics for testing
+     */
     public Mage(boolean initialiseGraphics) {
         super();
 
@@ -34,9 +43,13 @@ public class Mage extends Player {
         }
         maxMana = 100f;
         mana = 100f;
-        manaRegeneration = 12f;
+        manaRegeneration = 25f;
     }
 
+    /**
+     * Update method that calculates logic depending on time
+     * @param delta time
+     */
     @Override
     public void update(float delta) {
         super.update(delta);
@@ -44,7 +57,11 @@ public class Mage extends Player {
         mana += manaRegeneration * delta;
         mana = Math.min(mana, maxMana);
     }
-
+    /**
+     * Attack function for mage. Creates a projectile that moves in the direction of the mouse cursor and damages enemies it hits. Costs 20 mana.
+     * @return returns mage projectile, that is accelerating and has a cyan color
+     * @throws NoManaException if player doesn't have enough mana to attack
+     */
     public Projectile attack() throws NoManaException {
         float cost = 20;
 
@@ -65,6 +82,10 @@ public class Mage extends Player {
         );
     }
 
+    /**
+     * Function to handle attack input.
+     * If left mouse button is pressed, it tries to attack and add the mage projectile to projectiles.
+     */
     @Override
     protected void handleAttackInput() {
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {

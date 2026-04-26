@@ -4,7 +4,13 @@ package io.github.fiitgame.Enemy;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-
+/**
+ * Slime class. One of the enemies in the game.
+ * It has lower stats than skeleton.
+ * It drops less XP than Skeleton.
+ *
+ *
+ */
 public class Slime extends Enemy implements EnemyInterface {
 
 
@@ -15,6 +21,10 @@ public class Slime extends Enemy implements EnemyInterface {
         droppedXp = 5 + (lvl - 1) * 2;
     }
 
+    /**
+     * move function. Slimes wobbles :3
+     * @param delta time
+     */
      @Override
      protected void move(float delta) {
         super.move(delta);

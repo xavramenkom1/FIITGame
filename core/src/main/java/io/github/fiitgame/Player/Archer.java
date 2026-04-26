@@ -13,6 +13,10 @@ import io.github.fiitgame.Projectiles.Projectile;
 
 import static io.github.fiitgame.Main.assets;
 
+/**
+ * Archer class that has medium health and damage, but can attack from a distance.
+ * Has a limited number of arrows and needs to reload after using them all.
+ */
 public class Archer extends Player {
 
     private float attackRange;
@@ -23,6 +27,10 @@ public class Archer extends Player {
     private float reloadTime;
     private boolean isReloading;
 
+    /**
+     * Main constructor. Initialises arrows
+     * @param initialiseGraphics for testing
+     */
     public Archer(boolean initialiseGraphics) {
         super();
 
@@ -43,6 +51,10 @@ public class Archer extends Player {
         reloadTime = 2.5f;
     }
 
+    /**
+     * Update method that calculates logic depending on time
+     * @param delta time
+     */
     @Override
     public void update(float delta) {
         super.update(delta);
@@ -58,6 +70,10 @@ public class Archer extends Player {
         }
     }
 
+    /**
+     * Function to handle attack input.
+     * If left mouse button is pressed, it tries to attack and add the archer projectile(arrow) to projectiles.
+     */
     @Override
     protected void handleAttackInput() {
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
@@ -72,6 +88,11 @@ public class Archer extends Player {
         }
     }
 
+    /**
+     * Attack function that creates mage projectile in dirrection of the mouse cursor
+     * @return arrow projectile that is negatively accelerating, until it "falls"
+     * @throws AttackException throws cooldown exception if attack is on cooldown, or if archer is out of arrows and needs to reload
+     */
     public Projectile attack() throws AttackException {
         if (cooldownTimer > 0) throw new CoolDownException("Attack is on cooldown");
         if(arrowCount <= 0){
@@ -97,11 +118,20 @@ public class Archer extends Player {
         arrowCount--;
         return proj;
     }
+
+    /**
+     * Reload function to refill arrows and start reload cooldown.
+     * Archer can't attack while reloading.
+     */
     private void reload(){
         arrowCount = maxArrowCount;
         cooldownTimer = reloadTime;
         isReloading = true;
     }
+
+    /**
+     * Increases arrow pocket size if level is up
+     */
     @Override
     protected void levelUp(){
         super.levelUp();
