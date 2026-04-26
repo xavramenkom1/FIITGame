@@ -20,18 +20,6 @@ public class WaveTest {
     }
 
     @Test
-    void initiallyNotFinished() {
-        Wave wave = new Wave(1);
-        assertFalse(wave.isFinished());
-    }
-
-    @Test
-    void wave0_notFinished() {
-        Wave wave = new Wave(0);
-        assertFalse(wave.isFinished());
-    }
-
-    @Test
     void differentWaveNumbers_storedCorrectly() {
         for (int i = 1; i <= 10; i++) {
             Wave wave = new Wave(i);

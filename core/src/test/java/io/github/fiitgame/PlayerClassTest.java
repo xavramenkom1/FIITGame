@@ -29,7 +29,7 @@ public class PlayerClassTest {
 
     @Test
     void values_exactlyTwo() {
-        assertEquals(2, PlayerClass.values().length);
+        assertEquals(3, PlayerClass.values().length);
     }
 
     @Test

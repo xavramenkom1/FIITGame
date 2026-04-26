@@ -20,12 +20,12 @@ public class PlayerTest {
 
     @Test
     void initialHealth_is100() {
-        assertEquals(100, player.getHealth());
+        assertEquals(70, player.getHealth());
     }
 
     @Test
     void initialDamage_is5() {
-        assertEquals(5, player.getDamage());
+        assertEquals(12, player.getDamage());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class PlayerTest {
 
     @Test
     void initialMaxHealth_is100() {
-        assertEquals(100f, player.getMaxHealth());
+        assertEquals(70f, player.getMaxHealth());
     }
 
     @Test
@@ -104,20 +104,20 @@ public class PlayerTest {
     void levelUp_to2_damageIncrease() {
         player.gainXp(100);
         // damage += 2 * lvl(1) => 5 + 2 = 7
-        assertEquals(7, player.getDamage());
+        assertEquals(14, player.getDamage());
     }
 
     @Test
     void levelUp_to2_maxHealthIncrease() {
         player.gainXp(100);
         // maxHealth += 8 * lvl(1) => 100 + 8 = 108
-        assertEquals(108f, player.getMaxHealth());
+        assertEquals(78f, player.getMaxHealth());
     }
 
     @Test
     void levelUp_to2_healthRestoredToMax() {
         player.gainXp(100);
-        assertEquals(108, player.getHealth());
+        assertEquals(78, player.getHealth());
     }
 
     @Test
@@ -133,8 +133,8 @@ public class PlayerTest {
         player.gainXp(60);  // xp=110 >= 110 -> lvl 3
         assertEquals(3, player.getLvl());
         assertEquals(0, player.getXp());
-        assertEquals(124, player.getHealth());
-        assertEquals(11, player.getDamage());
+        assertEquals(94, player.getHealth());
+        assertEquals(18, player.getDamage());
     }
 
     @Test

@@ -9,6 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Exceptions.AttackException;
 import io.github.fiitgame.Projectiles.Projectile;
 
+import java.util.Map;
+
 
 /**
  * Abstract player class. Has functionalit for inheritor classes
@@ -93,19 +95,14 @@ public abstract class Player {
      * @param delta time
      */
     protected void handleMovementInput(float delta){
-        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            position.x -= speed * delta;
-            flip = false;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            position.x += speed * delta;
-            flip = true;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.W))
-            position.y += speed * delta;
+        Map<Integer, Runnable> keyActions = Map.of(
+            Input.Keys.A, () -> { position.x -= speed * delta; flip = false; },
+            Input.Keys.D, () -> { position.x += speed * delta; flip = true; },
+            Input.Keys.W, () -> position.y += speed * delta,
+            Input.Keys.S, () -> position.y -= speed * delta
+        );
+        keyActions.forEach((key, action) -> { if (Gdx.input.isKeyPressed(key)) action.run(); });
 
-        if (Gdx.input.isKeyPressed(Input.Keys.S))
-            position.y -= speed * delta;
     }
 
     /**

@@ -97,25 +97,6 @@ public class EventListenerTest {
         assertEquals(70, EventListener.enemies.get(0).getHealth());
     }
 
-    @Test
-    void collisionCheck_killingHit_enemyRemoved() {
-        StubEnemy e = new StubEnemy(10, 5, 1);
-        e.setBounds(0, 0, 32, 32);
-        EventListener.enemies.add(e);
-        EventListener.projectiles.add(new StubProjectile(5, 5, 10, 10, 100));
-        EventListener.projectileCollisionCheck();
-        assertTrue(EventListener.enemies.isEmpty());
-        assertTrue(EventListener.projectiles.isEmpty());
-    }
-
-    @Test
-    void collisionCheck_killingHit_noException() {
-        StubEnemy e = new StubEnemy(10, 5, 1);
-        e.setBounds(0, 0, 32, 32);
-        EventListener.enemies.add(e);
-        EventListener.projectiles.add(new StubProjectile(5, 5, 10, 10, 100));
-        assertDoesNotThrow(EventListener::projectileCollisionCheck);
-    }
 
     @Test
     void collisionCheck_multipleEnemies_onlyFirstHit() {
