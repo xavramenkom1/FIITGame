@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.fiitgame.Exceptions.CoolDownException;
 import io.github.fiitgame.Exceptions.MeleeException;
 import io.github.fiitgame.Listeners.EventListener;
 import io.github.fiitgame.Projectiles.MeleeProjectile;
@@ -50,15 +51,15 @@ public class Melee extends Player {
             try {
                 Projectile proj = attack();
                 projectiles.add(proj);
-            } catch (MeleeException e) {
-                // todo cooldown
+            } catch (CoolDownException e) {
+
             }
         }
     }
-    public Projectile attack() throws MeleeException {
+    public Projectile attack() throws CoolDownException {
 
         if (cooldownTimer > 0) {
-            throw new MeleeException("Cooldown");
+            throw new CoolDownException("Cooldown");
         }
 
         cooldownTimer = attackCooldown;

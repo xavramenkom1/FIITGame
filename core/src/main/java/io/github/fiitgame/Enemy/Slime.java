@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 
-public class Slime extends Enemy {
+public class Slime extends Enemy implements EnemyInterface {
 
 
 
@@ -16,7 +16,7 @@ public class Slime extends Enemy {
     }
 
      @Override
-     void move(float delta) {
+     protected void move(float delta) {
         super.move(delta);
         position.x += (float) ((Math.random() - 0.5) * speed * delta * 3);
         position.y += (float) ((Math.random() - 0.5) * speed * delta * 3);

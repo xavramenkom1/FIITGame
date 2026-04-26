@@ -2,7 +2,9 @@ package io.github.fiitgame.Listeners;
 
 import com.badlogic.gdx.math.Vector2;
 import io.github.fiitgame.Enemy.Enemy;
+import io.github.fiitgame.Player.Melee;
 import io.github.fiitgame.Player.Player;
+import io.github.fiitgame.Projectiles.MeleeProjectile;
 import io.github.fiitgame.Projectiles.Projectile;
 
 import java.util.ArrayList;
@@ -28,16 +30,27 @@ public class EventListener {
             for (int j = 0; j < enemies.size(); j++) {
                 Enemy enemy = enemies.get(j);
 
+                if(projectile instanceof MeleeProjectile meleeProj){
+                    if(!meleeProj.enemyCanBeImpacted(enemy)){
+                        continue;
+                    }
+                }
+
                 if (projectile.collides(enemy.getBounds())) {
                     enemy.takeDamage(projectile.getDamage());
+                    if(projectile instanceof MeleeProjectile meleeProj){
+                        meleeProj.addImpactedEnemy(enemy);
+                    }
 
                     if (enemy.isDead()) {
                         enemies.remove(j);
                         player.gainXp(enemy.getDroppedXp());
                     }
-                    projectiles.remove(i);
-                    i--;
-                    break;
+                    if(!(projectile instanceof MeleeProjectile)){
+                        projectiles.remove(i);
+                        i--;
+                        break;
+                    }
                 }
             }
         }

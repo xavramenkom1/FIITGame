@@ -47,14 +47,12 @@ public class StatisticBar {
         shapeRenderer.setColor(Color.DARK_GRAY);
         shapeRenderer.rect(barPosX, barPosY - 20f, width, height);
 
-        shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect(barPosX, barPosY - 20f, width * xpRatio, height);
-
         shapeRenderer.setColor(Color.DARK_GRAY);
         shapeRenderer.rect(barPosX, barPosY - 20f, width, height);
 
-        shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.rect(barPosX, barPosY - 40f, width * xpRatio, height);
+        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.rect(barPosX, barPosY - 20f, width * xpRatio, height);
+
 
         if((player instanceof Mage mage)) renderMana(shapeRenderer, mage);
         if((player instanceof Archer archer)) renderArrows(shapeRenderer, archer);

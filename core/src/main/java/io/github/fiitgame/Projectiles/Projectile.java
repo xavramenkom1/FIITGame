@@ -29,7 +29,6 @@ public class Projectile {
         this.bounds = new Rectangle(x, y, w, h);
     }
 
-
     public Projectile(Texture texture, Vector2 position, Vector2 direction, int damage) {
         sprite = new Sprite(texture);
         this.position = new Vector2(position);
@@ -43,12 +42,16 @@ public class Projectile {
 
     public void setPosition(Vector2 position) {
         this.position = new Vector2(position);
+        bounds.setPosition(position.x, position.y);
     }
     public void setDirection(Vector2 direction){
         this.direction = new Vector2(direction);
     }
     public void setSpeed(float speed) {this.speed = speed;}
-    public void setSize(float ratio) { this.sprite.setSize(ratio * sprite.getWidth(), ratio * sprite.getHeight()); }
+    public void setSize(float ratio) {
+        this.sprite.setSize(ratio * sprite.getWidth(), ratio * sprite.getHeight());
+        this.bounds.setSize(this.sprite.getWidth(), this.sprite.getHeight());
+    }
 
     public Vector2 getPosition(){
         return new Vector2(position);

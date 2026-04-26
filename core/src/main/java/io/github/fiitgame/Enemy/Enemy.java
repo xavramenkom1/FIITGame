@@ -11,7 +11,7 @@ import io.github.fiitgame.Main;
 import static io.github.fiitgame.Screens.GameScreen.player;
 
 
-public abstract class Enemy {
+public abstract class Enemy implements EnemyInterface {
 
     private int health;
     private int maxHealth;
@@ -79,7 +79,7 @@ public abstract class Enemy {
     }
 
 
-
+    @Override
     public void takeDamage(int damage) {
         health -= damage;
         if (health < 0) {
@@ -88,7 +88,7 @@ public abstract class Enemy {
     }
 
 
-    void move(float delta) {
+    protected void move(float delta) {
         Vector2 playerPos = player.getPosition();
         Vector2 direction = new Vector2(playerPos.x - position.x, playerPos.y - position.y).nor();
         position.x += direction.x * speed * delta;
@@ -124,6 +124,10 @@ public abstract class Enemy {
 
     private static int calculateXp(int lvl) {
         return 10 * lvl;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 
 

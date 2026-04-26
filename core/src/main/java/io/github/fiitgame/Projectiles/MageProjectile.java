@@ -13,6 +13,7 @@ public class MageProjectile extends Projectile {
         this.speed = 130;
         acceleration = 0.01f;
         sprite.setColor(0, 1f, 1f, 1f);
+        setActive(true);
     }
     @Override
     public void update(float delta){

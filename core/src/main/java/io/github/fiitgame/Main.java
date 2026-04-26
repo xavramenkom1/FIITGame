@@ -33,6 +33,8 @@ public class Main extends Game {
         assets.load("textures/Player/archer-texture.png", Texture.class);
         assets.load("textures/projectiles/arrow.png", Texture.class);
         assets.load("textures/projectiles/mage-projectile.png", Texture.class);
+        assets.load("textures/Enemies/skeleton.png", Texture.class);
+
         assets.finishLoading();
     }
 

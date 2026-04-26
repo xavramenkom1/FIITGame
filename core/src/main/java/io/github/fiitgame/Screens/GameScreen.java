@@ -95,6 +95,9 @@ public class GameScreen implements Screen {
         // ======= UI =======
         statisticBar.render();
 
+        // ======= Wave System =======
+
+        currentWave.update(delta);
 
         // ========= PAUSE =========
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {

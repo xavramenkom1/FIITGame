@@ -27,7 +27,7 @@ public abstract class Player {
     protected Rectangle bounds;
 
     protected float invulnerabilityTimer = 0f;
-    protected static final float invulnerabilityDur = 1.0f; // 1 sec invul
+    protected static final float invulnerabilityDur = 0.5f;
     protected boolean isInvulnerable = false;
 
     public Player() {
@@ -36,7 +36,7 @@ public abstract class Player {
         xp = 0;
         neededXp = 100;
         this.position = new Vector2(200, 200);
-        this.bounds = new Rectangle(position.x, position.y, 32, 32);
+        this.bounds = new Rectangle(position.x, position.y, 16, 28);
         flip = false;
     }
 
