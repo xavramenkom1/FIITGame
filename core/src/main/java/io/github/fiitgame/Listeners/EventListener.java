@@ -16,7 +16,6 @@ public class EventListener {
 
 
     public static List<Projectile> projectiles;
-    public static List<Projectile> enemyProjectiles;
     public static List<Enemy> enemies;
 
     public EventListener() {
